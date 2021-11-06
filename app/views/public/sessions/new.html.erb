@@ -1,6 +1,5 @@
-<h2>管理者ログイン</h2>
-
-<%= form_with model: @admin, url:path, local: true do |f| %>
+<h2>ログイン</h2>
+  <%= form_with model: @public, url:new_customer_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -15,5 +14,3 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
-
