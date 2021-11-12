@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         delete 'cart_items/:id' => 'cart_items#destroy_all'
       end
     end
-    resources :orders, only: [:new, :create, :index, :show] do
+    resources :orders, onlsy: [:new, :create, :index, :show] do
       collection do
         get 'confirm'
         get 'complete'

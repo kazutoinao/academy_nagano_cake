@@ -1,7 +1,40 @@
 <div class="container">
   <div class="row">
     <h4 class="col-lg-2 text-center bg-light my-4">商品一覧</h4>
-  </div>
-
+      <div class="col-lg-2 text-center  my-4">
+        <%= link_to new_admin_item_path, class: 'text-dark' do %>
+        <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </div>
+    <div class="col-lg-2"></div>
   </div>
 </div>
+
+<table class="teble">
+  <thead>
+    <tr>
+      <th class="header1">商品id</th>
+      <th class="header2">商品名</th>
+      <th class="header2">税抜価格</th>
+      <th class="header2">ジャンル</th>
+      <th class="header2">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+       <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+
+    </tr>
+     <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
