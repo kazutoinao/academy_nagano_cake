@@ -10,14 +10,14 @@
   </div>
 </div>
 
-<table class="teble">
+<table class="mx-auto">
   <thead>
     <tr>
-      <th class="header1">商品id</th>
-      <th class="header2">商品名</th>
-      <th class="header2">税抜価格</th>
-      <th class="header2">ジャンル</th>
-      <th class="header2">ステータス</th>
+      <th>商品id</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
@@ -25,16 +25,10 @@
     <tr>
       <td><%= item.id %></td>
       <td><%= item.name %></td>
-       <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
     </tr>
-     <% end %>
+    <% end %>
   </tbody>
-  <tfoot>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-  </tfoot>
-</table>
+ </table>

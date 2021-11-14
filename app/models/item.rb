@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  has_many :cart_item, dependent: :destroy
-  has_many :order, dependent: :destroy
-  belongs_to :order_detail
+  belongs_to :genre
+  has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
   attachment :image
 end
