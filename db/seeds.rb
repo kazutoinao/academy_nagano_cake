@@ -9,6 +9,6 @@ Admin.create!(
   email: 'admin@gmail.com',
   password: '123456'
   )
-Genre.create!(
-  name: 'ケーキ'
-  )
+# Genre.create!(
+#   name: 'ケーキ'
+#   )
