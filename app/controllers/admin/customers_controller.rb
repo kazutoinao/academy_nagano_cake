@@ -3,11 +3,22 @@ class Admin::CustomersController < ApplicationController
         @customers=Customer.all
     end
     def  show
-        @custermer=Custermer.find(params[:id])
+        @custormer=Custormer.find(params[:id])
     end
     def  edit
-
+        @custormer=Custormer.find(params[:id])
     end
     def update
+        @custormer=Custormer.find(params[:id])
+    if@custormer.update(custormer_params)
+        redirect_to admin_customers_path(@customer)
+    else
+      @customer=Customer.find(params[:id])
+      render :edit
     end
+    end
+    private
+      def customer_params
+        params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :postal_code, :address, :telephone_number, :is_active)
+      end
 end

@@ -1,74 +1,87 @@
-
 <div class="container">
-  <h2>新規会員登録</h2>
-  <%= form_with model: @public, url:customer_session_path, local: true do |f| %>
-    <div class="row">
-      <div class="col">
-        <p>名前</p>
-      </div>
-      <div class="col">
-        <%= f.label :"(姓)" %>
-        <%= f.text_field :last_name %>
-      </div>
-      <div class="col">
-        <%= f.label :"(名)" %>
-        <%= f.text_field :first_name %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"(ｾｲ)" %>
-        <%= f.text_field :last_name_kana %>
-      </div>
-      <div class="col">
-        <%= f.label :"(ﾒｲ)" %>
-        <%= f.text_field :first_name_kana %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-    </div>
+  <div class="row">
+    <h3 class="col-lg-3 text-center bg-light my-4 ml-5">新規会員登録</h3>
+  </div>
 
-    <div class="row">
-      <div class="col">
-        <%= f.label :"郵便番号(ハイフンなし)" %>
-        <%= f.text_field :postal_code %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"住所"%>
-        <%= f.text_field :address %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"電話番号（ハイフンなし）"%>
-        <%= f.text_field :telephone_number%>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"パスワード(６文字以上)" %><br/>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :"パスワード（確認用)" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
+
+<%= form_with model: @public, url:customer_session_path, local: true do |f| %>
+    <!--<div class ="container form-group">-->
+      <!--<div class ="row form-inline">-->
+        <div class ="form-group row">
+          <%= f.label "名前", class:"col-md-2 col-form-label"%>
+          <%= f.label "(姓)", class:"col-md-1 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.text_field :last_name,class:"form-control"%>
+          </div>
+          <%= f.label "(名)", class:"col-md-1 col-form-label"%>
+          <div class="form-group col-md-4">
+          <%= f.text_field :first_name,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class ="form-group row">
+          <%= f.label "フリガナ", class:"col-md-2 col-form-label"%>
+          <%= f.label "(セイ)", class:"col-md-1 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.text_field :last_name_kana,class:"form-control"%>
+          </div>
+          <%= f.label "(メイ)", class:"col-md-1 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.text_field :first_name_kana,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label "メールアドレス", class:"col-md-3 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.email_field :email,class:"form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label "郵便番号(ハイフンなし)", class:"col-md-3 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.text_field :postal_code,class:"form-control" %>
+          </div>
+        </div>
+
+        <div class ="form-group row">
+          <%= f.label "住所",class:"col-md-3 col-form-label"%>
+          <div class="form-group col-md-9">
+            <%= f.text_field :address,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class ="form-group row">
+          <%= f.label "電話番号（ハイフンなし）",class:"col-md-3 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.text_field :telephone_number,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class ="form-group row">
+          <%= f.label "パスワード(６文字以上)",class:"col-md-3 col-form-label" %>
+          <div class="form-group col-md-4">
+            <!--% if @minimum_password_length %>-->
+            <!--  <em>%= @minimum_password_length %></em>-->
+            <!--% end %>-->
+            <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :password_confirmation, "パスワード（確認用）",class:"col-md-3 col-form-label"%>
+          <div class="form-group col-md-4">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
+          </div>
+        </div>
+
+        <div class ="form-group row ">
+           <%= f.submit "新規登録",class:"offset-md-3 col-md-3 btn btn-success"%>
+           <% end %>
+        </div>  <!--</div>-->
 </div>
+    <!--</div>-->
+
 
 
