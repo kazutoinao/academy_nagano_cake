@@ -24,19 +24,10 @@
       <td><%= item.id %></td>
       <td><%= link_to item.name, admin_item_path(item) %></td>
       <td><%= item.price %></td>
-      <td><%= item.genre.name %></td>
-      <!--<td>%= item.is_active ? '販売中', class:".text-success" : '販売停止中' %></td>-->
+      <td><%= item.genre.name%></td>
+      <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
     </tr>
     <% end %>
   </tbody>
  </table>
- <nav aria-label="Page navigation example">
-  <ul class="col-4 mx-auto pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-</div>
+<div class="offset-md-5 col-md-2"><%= paginate @items%></div>

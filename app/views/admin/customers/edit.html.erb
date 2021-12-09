@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <h4 class="header col-lg-2 text-center bg-light my-4 ml-5">さんの会員詳細</h4>
+    <h4 class="header col-lg-4 text-center bg-light my-4 ml-5"><%= @customer.last_name+@customer.first_name %>さんの会員詳細</h4>
   </div>
 
 <div class="row">
     <div class="col-lg-12">
-    <%= form_with model: @customer,url: , local: true do |f| %>
+    <%= form_with model: @customer,url: admin_customer_path , local: true do |f| %>
       <div class="form-group">
           <%= f.label :会員ID%>
            <%= f.text_field:id%>

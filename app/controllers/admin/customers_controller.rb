@@ -1,16 +1,17 @@
 class Admin::CustomersController < ApplicationController
     def  index
-        @customers=Customer.all
+        @customers=Customer.all.page(params[:page]).per(3)
+
     end
     def  show
-        @custormer=Custormer.find(params[:id])
+        @customer=Customer.find(params[:id])
     end
     def  edit
-        @custormer=Custormer.find(params[:id])
+        @customer=Customer.find(params[:id])
     end
     def update
-        @custormer=Custormer.find(params[:id])
-    if@custormer.update(custormer_params)
+        @customer=Customer.find(params[:id])
+    if@customer.update(customer_params)
         redirect_to admin_customers_path(@customer)
     else
       @customer=Customer.find(params[:id])
