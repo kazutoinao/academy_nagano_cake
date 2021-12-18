@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    @cart_items = CartItem.all
+    @order = Order.all
   end
 end

@@ -6,11 +6,8 @@ class Public::OrdersController < ApplicationController
     end
 
     def  confirm
+      @total_price=0
       @cart_items=current_customer.cart_items
-      @total=0
-        @cart_items.each do |cart_item|
-            @total=@total+cart_item.total_price
-        end
       @order=Order.new(order_params)
       if  params[:order][:address_select] == "0"
         @order.postal_code = current_customer.postal_code
@@ -29,9 +26,9 @@ class Public::OrdersController < ApplicationController
         @order.name = params[:order][:name]
       end
       if params[:order][:payment_method] =="credit_card"
-        @order.payment_method=0
+        @order.payment_method="credit_card"
       elsif  params[:order][:payment_method] =="transfer"
-        @order.payment_method=1
+        @order.payment_method="transfer"
       end
     end
 
@@ -39,17 +36,20 @@ class Public::OrdersController < ApplicationController
     end
 
     def  create
-
+      @cart_items=current_customer.cart_items
+      @total_price=0
+      @order=Order.new(order_params)
+      @order.customer_id=current_customer.id
+      if  @order.save!
+            redirect_to complete_orders_path
+      else
+            render :confirm
+      end
+     end
+    def index
     end
-
-    def  index
-    end
-
-    def  show
-    end
-
     private
     def order_params
-        params.require(:order).permit(:payment_method, :address, :name, :postal_code)
+        params.require(:order).permit(:payment_method, :address, :name, :postal_code, :total_payment, :shipping_cost, :status)
     end
 end
