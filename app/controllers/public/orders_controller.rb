@@ -60,6 +60,10 @@ class Public::OrdersController < ApplicationController
       @orders=Order.all
       @order_details=OrderDetail.all
     end
+    def show
+      @order=Order.find(params[:id])
+      @order_details=@order.order_details
+    end
     private
     def order_params
         params.require(:order).permit(:payment_method, :address, :name, :postal_code, :total_payment, :shipping_cost, :status)

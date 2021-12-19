@@ -21,7 +21,7 @@
           <%= cart_item.item.name%>
         </td>
         <td class="col-md-2">
-          <%=cart_item.add_tax_taxing_price %>
+          <%=cart_item.item.with_tax_price %>
         </td>
         <td class="col-md-2">
         <%= form_with model: cart_item, url:cart_item_path(cart_item), local: true do |f| %>
