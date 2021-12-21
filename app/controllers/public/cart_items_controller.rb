@@ -8,9 +8,14 @@ class Public::CartItemsController < ApplicationController
     end
 
     def  update
-
+       @cart_item=current_customer.cart_items
+    if @cart_item.update(cart_item_params)
+       redirect_to cart_items_path
+    else
+       @cart_item=current_customer.cart_items
+       render :index
     end
-
+    end
     def  destroy
       @cart_item=CartItem.find(params[:id])
       redirect_to cart_items_path

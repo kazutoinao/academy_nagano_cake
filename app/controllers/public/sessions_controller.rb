@@ -2,14 +2,18 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-    def after_sign_in_path_for(resource)
-      items_path# ログイン後に遷移するpathを設定
-    end
     def after_sign_out_path_for(resource)
       new_customer_session_path # ログアウト後に遷移するpathを設定
     end
-
-
+    def after_sign_in_path_for(resource)#resouseは今ログインしようとしているユーザーの情報
+      if resource.is_deleted == true
+       reset_session#強制的にログアウト
+        root_path
+      else
+        root_path
+        #isdelited true 強制的にログアウトしたのち（reset session）最初のページに戻る
+      end
+    end
 
   # GET /resource/sign_in
   # def new
