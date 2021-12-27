@@ -6,10 +6,7 @@ class Admin::GenresController < ApplicationController
     def create
         @genre=Genre.new(genre_params)
         if @genre.save
-            redirect_to edit_admin_genre_path(@genre.id)
-        else
-            @genres=Item.all
-            render :index
+            redirect_to admin_genres_path
         end
     end
     def edit
